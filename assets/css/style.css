@@ -1,0 +1,36 @@
+body {
+    background: blue;
+    font-family: 'Karma', serif;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 50px;
+}
+
+h3 {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 30px;
+}
+
+footer {
+    font-family: 'Karma', serif;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 25px;
+    padding-top: 20px;
+    background: #e9ecef;
+    text-align: center; 
+}
+
+.container {
+    margin-bottom: 75px;
+}
+
+#buttons {
+    text-align: center;
+    margin: 0 auto;
+}
+

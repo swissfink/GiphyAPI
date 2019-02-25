@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Giphy API Exercise</title>
+
+    <!-- Added a link to css reset file-->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Added a link to style sheet-->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Added a link to a Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Karma" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <br>
+        
+        <div class="row"> <!-- top row -->
+
+            <div class="col-lg-1"> <!-- column 1 -->
+                
+            </div> <!-- end of column 1-->
+
+            <div class="col-lg-10"> <!-- column 2 -->
+
+                <div class="card">
+
+                    <div class="card-header text-center">
+                        <h1> Random Bits of Trivia Game</h1>
+                    </div>
+
+                    <div class="card-body">
+                        <h3>How to play</h3>
+                        
+                        <hr class="my-4">
+                        
+                        <!-- Div containing the start button  -->
+                        <div id="buttons" style="text-align: center;">
+                            <button type="button" class="btn btn-lg btn-outline-dark" id="start">Start Quiz</button>
+                            <button type="button" class="btn btn-lg btn-outline-dark" id="reset">Reset</button>
+                        </div>
+                        
+                    </div> <!-- end of card body -->
+
+                </div><!-- end of card-->
+                
+                <br>
+
+            </div> <!-- end of column 2-->
+
+            <div class="col-lg-1"> <!-- column 3 -->
+                
+            </div> <!-- end of column -->
+
+        </div> <!-- end of top row -->
+
+        <div class="row">
+
+            <div class="col-lg-1"> <!-- column 1 -->
+               
+            </div> <!-- end of column -->
+
+            <div class="col-lg-10"> <!-- column 2 -->
+                
+                <div class="card" id="question-card">
+
+                    <div class="card-header">
+                        <h3>Timer
+                            <span id="countdownTimer"></span>
+                        </h3>
+                        <p id="tally">
+                            <span id="answersRightText"></span>
+                            <span id="answersWrongText"></span>
+                            <span id="answersSkippedText"></span>
+                        </p>
+                    </div>
+
+                    <div class="card-body">  
+
+                    </div> <!-- end of card body -->
+
+                    <br>
+
+                </div> <!-- end of card -->
+
+            </div> <!-- end of column 2 -->
+            
+            <br>
+
+            <div class="col-lg-1"> <!-- column 3 -->
+                
+            </div> <!-- end of column 3-->
+            
+            <br>
+
+        </div> <!-- end of row -->
+
+    </div> <!-- end of container -->
+
+    <!-- footer info -->
+    <footer class="text-muted">
+        <p> &copy; copyright 2019 | <a href="https://swissfink.github.io/" target="_blank">Richard Fink</a> | All rights reserved.</p>
+    </footer>
+
+    <!-- Added a link to my game JavaScript file -->
+    <!-- jQuery JS -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Code to the JavaScript File -->
+    <script src="/assets/javascript/giphy.js"></script>
+
+</body>
+
+</html>
