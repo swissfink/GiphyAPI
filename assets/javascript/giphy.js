@@ -1,129 +1,148 @@
-/**
- * pulls information from the form and build the query URL
- * @returns {string} URL for NYT API based on form inputs
- */
-function buildQueryURL() {
-  // queryURL is the url we'll use to query the API
-  var queryURL = "http://api.giphy.com/v1/gifs/search?";
+// Initial array of Christmas items
+var topics = ["Santa", "Christmas Presents", "Reindeer", "Christmas Cookies", "Elves", "Christmas Lights", "Snowman"];
 
-  // Begin building an object to contain our API call's query parameters
-  // Set the API key
-  var queryParams = { "api-key": "pVBUBONK5rWAANGAtcu0lsUkwck5Wniv"};
+// Calling the showButtons function to display the intial buttons
+showButtons();
 
-  // Grab text the user typed into the search input, add to the queryParams object
-  queryParams.q = $("#search-term")
-    .val()
-    .trim();
+// Function displays the topics data
+function showButtons() {
 
-  // Logging the URL so we have access to it for troubleshooting
-  console.log("---------------\nURL: " + queryURL + "\n---------------");
-  console.log(queryURL + $.param(queryParams));
-  return queryURL + $.param(queryParams);
-}
+  // Delete the topics prior to adding new topics (to prevent repeat buttons)
+  $("#buttons-appear-here").empty();
 
-/**
- * takes API data (JSON/object) and turns it into elements on the page
- * @param {object} NYTData - object containing NYT API data
- */
-function updatePage(NYTData) {
-  // Get from the form the number of results to display
-  // API doesn't have a "limit" parameter, so we have to do this ourselves
-  var numArticles = $("#article-count").val();
+  // Loop through the array of topics
+  for (var i = 0; i < topics.length; i++) {
 
-  // Log the NYTData to console, where it will show up as an object
-  console.log(NYTData);
-  console.log("------------------------------------");
+    // Generate buttons for each topic in the array
+    var a = $("<button>");
 
-  // Loop through and build elements for the defined number of articles
-  for (var i = 0; i < numArticles; i++) {
-    // Get specific article info for current index
-    var article = NYTData.response.docs[i];
+    // Add a class of "christmas-button" to each button
+    a.addClass("christmas-button btn btn-lg btn-danger");
 
-    // Increase the articleCount (track article # - starting at 1)
-    var articleCount = i + 1;
+    // Add a data-attribute
+    a.attr("data-name", topics[i]);
 
-    // Create the  list group to contain the articles and add the article content for each
-    var $articleList = $("<ul>");
-    $articleList.addClass("list-group");
+    // Provide the initial button text
+    a.text(topics[i]);
 
-    // Add the newly created element to the DOM
-    $("#article-section").append($articleList);
-
-    // If the article has a headline, log and append to $articleList
-    var headline = article.headline;
-    var $articleListItem = $("<li class='list-group-item articleHeadline'>");
-
-    if (headline && headline.main) {
-      console.log(headline.main);
-      $articleListItem.append(
-        "<span class='label label-primary'>" +
-          articleCount +
-          "</span>" +
-          "<strong> " +
-          headline.main +
-          "</strong>"
-      );
-    }
-
-    // If the article has a byline, log and append to $articleList
-    var byline = article.byline;
-
-    if (byline && byline.original) {
-      console.log(byline.original);
-      $articleListItem.append("<h5>" + byline.original + "</h5>");
-    }
-
-    // Log section, and append to document if exists
-    var section = article.section_name;
-    console.log(article.section_name);
-    if (section) {
-      $articleListItem.append("<h5>Section: " + section + "</h5>");
-    }
-
-    // Log published date, and append to document if exists
-    var pubDate = article.pub_date;
-    console.log(article.pub_date);
-    if (pubDate) {
-      $articleListItem.append("<h5>" + article.pub_date + "</h5>");
-    }
-
-    // Append and log url
-    $articleListItem.append("<a href='" + article.web_url + "'>" + article.web_url + "</a>");
-    console.log(article.web_url);
-
-    // Append the article
-    $articleList.append($articleListItem);
+    // Add the buttons to the HTML
+    $("#buttons-appear-here").append(a);
   }
 }
 
-// Function to empty out the articles
-function clear() {
-  $("#article-section").empty();
-}
+// This function handles events when the submit button is clicked
+$("#add-christmas-button").on("click", function (event) {
 
-// CLICK HANDLERS
-// ==========================================================
-
-// .on("click") function associated with the Search Button
-$("#run-search").on("click", function(event) {
-  // This line allows us to take advantage of the HTML "submit" property
-  // This way we can hit enter on the keyboard and it registers the search
-  // (in addition to clicks). Prevents the page from reloading on form submit.
+  // Prevents the submit button's default behavior (submitting the form) when clicked 
   event.preventDefault();
 
-  // Empty the region associated with the articles
+  // Grab the input from the text field
+  var christmasButton = $("#christmas-button-input").val().trim();
+
+  // Add the topic from the text field into the array
+  topics.push(christmasButton);
+
+  // Call the renderButtons to process the topics array
+  showButtons();
+
+  // Clear out the input text
+  document.getElementById("christmas-button-input").value = "";
+  
+});
+
+// Function for displaying the christmas-gifs
+// Add event listener to the document to work for dynamically generated elements
+// $(".christmas-gif").on("click") will only add listeners to elements that are on the page at that time
+$(document).on("click", ".christmas-button", function () {
+
   clear();
 
-  // Build the query URL for the ajax request to the NYT API
-  var queryURL = buildQueryURL();
+  // store text from the button that the user clicked, to be added to the query url
+  var christmasItem = $(this).attr("data-name");
 
-  // Make the AJAX request to the API - GETs the JSON data at the queryURL.
-  // The data then gets passed as an argument to the updatePage function
+  // queryURL is the url we'll use to query the API
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + christmasItem + "&api_key=pVBUBONK5rWAANGAtcu0lsUkwck5Wniv&limit=10&rating=pg";
+
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(updatePage);
+  }).then(function (response) {
+
+    // Console log to see what the response object looks like.
+    console.log(response);
+
+    // Make a variable named results and set it equal to response.data
+    var results = response.data;
+
+    // Create a for loop to cycle through the results.
+    for (var i = 0; i < results.length; i++) {
+
+      // Make a div with jQuery and store it in a variable. 
+      // Add classses so the info in the div can be displayed.
+      var topicDiv = $("<div>").addClass("card p-3");
+
+      // Make a paragraph tag with jQuery and store it in a variable named p.
+      // This will be what displays the gifs rating
+      // Set the inner text of the paragraph to the rating of the image in results[i].
+      var p = $("<p>").text("This gif is rated: " + results[i].rating);
+
+      // Make an image tag with jQuery and store it in a variable named topicImage.
+      // Add the classes of "card" and "christmas-gif" so it can be added to the div above.
+      var topicImage = $("<img>").addClass("card christmas-gif");
+
+      // Create the still / animate attributes that will be use to pause / activate the gifs
+      topicImage.attr("src", results[i].images.fixed_height_still.url);
+      topicImage.attr("data-state", "still");
+      topicImage.attr("data-animate", ("src", results[i].images.fixed_height.url));
+      
+      // Append the variables to the topiclDiv variable.
+      topicDiv.append(p)
+      topicDiv.append(topicImage);
+
+      // Prepend the topicDiv variable to the element with an id of gifs-appear-here.
+      $("#gifs-appear-here").prepend(topicDiv);
+    }
+
+    // Activating and pausing the gifs
+    $(".christmas-gif").on("click", function () {
+
+    var state = $(this).attr("data-state");
+
+    // Set the image's data-state to animate
+    if (state === "animate") {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+    
+    else {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    }
+    
+    });
+
+    // ============================================================
+
+    // Adding a gif to "favorites"
+
+    // This will be for moving a gif to a "favorites" section
+    // var fav = $("<a href='#'>").text("Add to favorites");
+
+    // .append(fav)
+
+    // Add the card-link class to fav so it can be displayed.
+    // $(fav).addClass("card-link");
+
+    // $("#favs-appear-here").prepend(link);
+
+    // ============================================================
+
+  });
+
+  // Function to empty out the gifs to make room for the new ones.
+  function clear() {
+    $("#gifs-appear-here").empty();
+  }
+
 });
 
-//  .on("click") function associated with the clear button
-$("#clear-all").on("click", clear);

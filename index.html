@@ -4,19 +4,22 @@
 <head>
 
     <title>Giphy API Exercise</title>
+   
+    <!-- Added a link to a Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Assistant" rel="stylesheet">
 
     <!-- Added a link to css reset file-->
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 
-    <!-- Added a link to Bootstrap-->
+    <!-- Added a link to Bootstrap style sheet-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <!-- Added a link to style sheet-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <!-- Added a link to a Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Karma" rel="stylesheet">
-
+    <!-- Added a favicon -->
+    <link rel="icon" href="/assets/images/christmastreefavicon.png"/>
+    
 </head>
 
 <body>
@@ -27,96 +30,106 @@
         
         <div class="row"> <!-- top row -->
 
-            <div class="col-lg-1"> <!-- column 1 -->
-                
-            </div> <!-- end of column 1-->
+            <div class="col-lg-12"> <!-- start column -->
 
-            <div class="col-lg-10"> <!-- column 2 -->
+                <div class="jumbotron jumbotron-fluid list-group-item-success">
 
-                <div class="card">
-
-                    <div class="card-header text-center">
-                        <h1> Random Bits of Trivia Game</h1>
+                    <div class="container">
+                        <iframe src="https://giphy.com/embed/xT0xelRQDmWxcxAU1O" width="100" height="100"  class="giphy-embed" id="cc1" allowFullScreen></iframe>
+                        <h1 class="display-4">Yay! Christmas gifs!</h1>
+                        <iframe src="https://giphy.com/embed/xT0xelRQDmWxcxAU1O" width="100" height="100"  class="giphy-embed" id="cc2" allowFullScreen></iframe>
                     </div>
 
+                </div> <!-- end of jumbotron -->
+
+                <div class="card " id="transparent-card">
+
                     <div class="card-body">
-                        <h3>How to play</h3>
-                        
-                        <hr class="my-4">
-                        
-                        <!-- Div containing the start button  -->
-                        <div id="buttons" style="text-align: center;">
-                            <button type="button" class="btn btn-lg btn-outline-dark" id="start">Start Quiz</button>
-                            <button type="button" class="btn btn-lg btn-outline-dark" id="reset">Reset</button>
-                        </div>
-                        
+
+                        <div class="card">
+
+                            <div class="list-group">
+
+                                <li class="list-group-item list-group-item-action list-group-item-danger"><h5>Directions</h5></li>
+
+                                <li class="list-group-item list-group-item-action list-group-item-success">Click a button below to generate 10 random gifs of the item inidcated on that button.</li>
+
+                                <li class="list-group-item list-group-item-action list-group-item-danger">Once the gifs have been displayed, click on any of the gifs to start or stop the animation.</li>
+
+                                <li class="list-group-item list-group-item-action list-group-item-success">You can also add your own Christmas gif button using the text field below.</li>
+
+                                <form id="christmas-form">
+
+                                    <div class="list-group">
+                                        
+                                        <li class="list-group-item list-group-item-action list-group-item-danger"><input type="text" id="christmas-button-input"></li>
+
+                                        <li class="list-group-item list-group-item-action list-group-item-success"><input class="btn btn-lg btn-danger" id="add-christmas-button" type="submit" value="Submit"></li>
+    
+                                    </div> <!-- end of list -->
+    
+                                </form>
+
+                            </div> <!-- end of list -->
+
+                        </div> <!-- end of card -->
+
+                    </div> <!-- end of card body -->
+
+                </div> <!-- end of card-->   
+
+                <br>
+
+                <div class="card" id="transparent-card">
+
+                    <div class="card-body" >
+            
+                        <div id="buttons-appear-here"></div>
+
                     </div> <!-- end of card body -->
 
                 </div><!-- end of card-->
                 
                 <br>
 
-            </div> <!-- end of column 2-->
+                <div class="card-columns">
 
-            <div class="col-lg-1"> <!-- column 3 -->
-                
+                    <div id="gifs-appear-here"></div>                    
+    
+                </div><!-- end of card-->
+
+                <br>
+
+                <!-- <div class="card">
+
+                    <div class="card">
+
+                        <p>This is where the favorites will get posted</p>
+
+                        <div id="favs-appear-here"></div>
+                    
+                    </div>
+        
+                </div>end of card -->
+
             </div> <!-- end of column -->
 
         </div> <!-- end of top row -->
 
-        <div class="row">
-
-            <div class="col-lg-1"> <!-- column 1 -->
-               
-            </div> <!-- end of column -->
-
-            <div class="col-lg-10"> <!-- column 2 -->
-                
-                <div class="card" id="question-card">
-
-                    <div class="card-header">
-                        <h3>Timer
-                            <span id="countdownTimer"></span>
-                        </h3>
-                        <p id="tally">
-                            <span id="answersRightText"></span>
-                            <span id="answersWrongText"></span>
-                            <span id="answersSkippedText"></span>
-                        </p>
-                    </div>
-
-                    <div class="card-body">  
-
-                    </div> <!-- end of card body -->
-
-                    <br>
-
-                </div> <!-- end of card -->
-
-            </div> <!-- end of column 2 -->
-            
-            <br>
-
-            <div class="col-lg-1"> <!-- column 3 -->
-                
-            </div> <!-- end of column 3-->
-            
-            <br>
-
-        </div> <!-- end of row -->
-
     </div> <!-- end of container -->
 
     <!-- footer info -->
-    <footer class="text-muted">
-        <p> &copy; copyright 2019 | <a href="https://swissfink.github.io/" target="_blank">Richard Fink</a> | All rights reserved.</p>
+    <footer class="list-group-item-success">
+        <p> &copy; copyright 2019 | <a href="https://swissfink.github.io/" target="_blank" class="footer-text">Richard Fink</a> | All rights reserved.</p>
     </footer>
 
-    <!-- Added a link to my game JavaScript file -->
-    <!-- jQuery JS -->
+    <!-- link to jQuery JS -->
     <script src="https://code.jquery.com/jquery.js"></script>
+
+    <!-- link to BootStrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-    <!-- Code to the JavaScript File -->
+
+    <!-- link to my giphy JavaScript file -->
     <script src="/assets/javascript/giphy.js"></script>
 
 </body>

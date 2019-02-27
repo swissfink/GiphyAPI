@@ -1,36 +1,103 @@
 body {
-    background: blue;
-    font-family: 'Karma', serif;
+    background: url("https://www.toptal.com/designers/subtlepatterns/patterns/christmas-colour.png");
+    /* background: #0084fb; */
+    font-family: 'Assistant', sans-serif;
+    font-size: 20px;
     margin-bottom: 25px;
 }
 
 h1 {
-    font-family: 'Fredericka the Great', cursive;
-    font-size: 50px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 60px;
 }
 
 h3 {
-    font-family: 'Fredericka the Great', cursive;
-    font-size: 30px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 40px;
+}
+
+h5 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 35px;
 }
 
 footer {
-    font-family: 'Karma', serif;
+    font-family: 'Assistant', sans-serif;
     position: fixed;
     bottom: 0;
     width: 100%;
     margin-top: 25px;
     padding-top: 20px;
-    background: #e9ecef;
     text-align: center; 
+}
+.footer-text {
+    color: #e25765;
+}
+
+#cc1 {
+    position: absolute;
+    left: 100px;
+    /* margin-left: 20px; */
+}
+
+#cc2 {
+    position: absolute;
+    right: 100px;
+    top:0;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.jumbotron {
+    text-align: center;
+    padding: 0;
+    margin-bottom: -34px;
+    border-radius: 5px;
+}
+.display-4 { 
+    padding: 25px;
+}
+
+input[type=text] {
+    margin-top: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #4e8357;
+}
+
+input[type=submit] {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    
+}
+#transparent-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 0;
 }
 
 .container {
     margin-bottom: 75px;
 }
 
-#buttons {
-    text-align: center;
-    margin: 0 auto;
+.christmas-button {
+    margin-right: 10px;
+    margin: 5px;
 }
 
+.btn:hover {
+    background: #4e8357;
+    border: 1px solid #4e8357;
+}
+
+@media only screen and (max-width: 600px) {
+    .card-columns {
+        column-count: 1;
+    }
+    #cc1,
+    #cc2 {
+        display: none;
+    }
+}
