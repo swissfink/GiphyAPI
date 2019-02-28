@@ -1,6 +1,5 @@
 body {
     background: url("https://www.toptal.com/designers/subtlepatterns/patterns/christmas-colour.png");
-    /* background: #0084fb; */
     font-family: 'Assistant', sans-serif;
     font-size: 20px;
     margin-bottom: 25px;
@@ -37,7 +36,6 @@ footer {
 #cc1 {
     position: absolute;
     left: 100px;
-    /* margin-left: 20px; */
 }
 
 #cc2 {

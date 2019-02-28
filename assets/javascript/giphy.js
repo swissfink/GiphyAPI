@@ -91,32 +91,36 @@ $(document).on("click", ".christmas-button", function () {
       var topicImage = $("<img>").addClass("card christmas-gif");
 
       // Create the still / animate attributes that will be use to pause / activate the gifs
-      topicImage.attr("src", results[i].images.fixed_height_still.url);
-      topicImage.attr("data-state", "still");
-      topicImage.attr("data-animate", ("src", results[i].images.fixed_height.url));
-      
+      topicImage.attr({
+        "src": results[i].images.fixed_height_still.url,
+        "data-still": results[i].images.fixed_height_still.url,
+        "data-animate": results[i].images.fixed_height.url,
+        "data-state": "still"
+      });
+  
       // Append the variables to the topiclDiv variable.
-      topicDiv.append(p)
+      topicDiv.append(p);
       topicDiv.append(topicImage);
-
+      
       // Prepend the topicDiv variable to the element with an id of gifs-appear-here.
       $("#gifs-appear-here").prepend(topicDiv);
     }
 
     // Activating and pausing the gifs
-    $(".christmas-gif").on("click", function () {
+    $(document).on("click", ".christmas-gif", function () {
 
     var state = $(this).attr("data-state");
 
-    // Set the image's data-state to animate
-    if (state === "animate") {
-      $(this).attr("src", $(this).attr("data-still"));
-      $(this).attr("data-state", "still");
-    }
-    
-    else {
+    // Set the image's data-state to from still to animate.
+    if (state === "still") {
       $(this).attr("src", $(this).attr("data-animate"));
       $(this).attr("data-state", "animate");
+    }
+    
+    // Set the image's data-state from animate to still.
+    else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
     }
     
     });
