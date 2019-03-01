@@ -4,7 +4,7 @@
 <head>
 
     <title>Giphy API Exercise</title>
-   
+
     <!-- Added a link to a Google font-->
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Assistant" rel="stylesheet">
 
@@ -18,8 +18,8 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <!-- Added a favicon -->
-    <link rel="icon" href="/assets/images/christmastreefavicon.png"/>
-    
+    <link rel="icon" href="/assets/images/christmastreefavicon.png" />
+
 </head>
 
 <body>
@@ -27,17 +27,19 @@
     <div class="container">
 
         <br>
-        
-        <div class="row"> <!-- top row -->
 
+        <div class="row"> <!-- top row -->
+            
             <div class="col-lg-12"> <!-- start column -->
 
                 <div class="jumbotron jumbotron-fluid list-group-item-success">
 
                     <div class="container">
-                        <iframe src="https://giphy.com/embed/xT0xelRQDmWxcxAU1O" width="100" height="100"  class="giphy-embed" id="cc1" allowFullScreen></iframe>
-                        <h1 class="display-4">Yay! Christmas gifs!</h1>
-                        <iframe src="https://giphy.com/embed/xT0xelRQDmWxcxAU1O" width="100" height="100"  class="giphy-embed" id="cc2" allowFullScreen></iframe>
+                        <iframe src="https://giphy.com/embed/xT0xelRQDmWxcxAU1O" width="100" height="100"
+                            class="giphy-embed" id="cc1" allowFullScreen></iframe>
+                        <h1 class="display-4">Yay! Christmas GIFs!</h1>
+                        <iframe src="https://giphy.com/embed/xT0xelRQDmWxcxAU1O" width="100" height="100"
+                            class="giphy-embed" id="cc2" allowFullScreen></iframe>
                     </div>
 
                 </div> <!-- end of jumbotron -->
@@ -50,24 +52,32 @@
 
                             <div class="list-group">
 
-                                <li class="list-group-item list-group-item-action list-group-item-danger"><h5>Directions</h5></li>
+                                <li class="list-group-item list-group-item-action list-group-item-danger">
+                                    <h5>Directions</h5>
+                                </li>
 
-                                <li class="list-group-item list-group-item-action list-group-item-success">Click a button below to generate 10 random gifs of the item inidcated on that button.</li>
+                                <li class="list-group-item list-group-item-action list-group-item-success">Click a
+                                    button below to generate 10 random GIFs of the item inidcated on that button.</li>
 
-                                <li class="list-group-item list-group-item-action list-group-item-danger">Once the gifs have been displayed, click on any of the gifs to start or stop the animation.</li>
+                                <li class="list-group-item list-group-item-action list-group-item-danger">Once the gifs
+                                    have been displayed, click on any of the GIFs to start or stop the animation.</li>
 
-                                <li class="list-group-item list-group-item-action list-group-item-success">You can also add your own Christmas gif button using the text field below.</li>
+                                <li class="list-group-item list-group-item-action list-group-item-success">You can also
+                                    add your own Christmas gif button using the text field below.</li>
 
                                 <form id="christmas-form">
 
                                     <div class="list-group">
-                                        
-                                        <li class="list-group-item list-group-item-action list-group-item-danger"><input type="text" id="christmas-button-input"></li>
 
-                                        <li class="list-group-item list-group-item-action list-group-item-success"><input class="btn btn-lg btn-danger" id="add-christmas-button" type="submit" value="Submit"></li>
-    
+                                        <li class="list-group-item list-group-item-action list-group-item-danger"><input
+                                                type="text" id="christmas-button-input"></li>
+
+                                        <li class="list-group-item list-group-item-action list-group-item-success">
+                                            <input class="btn btn-lg btn-danger" id="add-christmas-button" type="submit"
+                                                value="Submit"></li>
+
                                     </div> <!-- end of list -->
-    
+
                                 </form>
 
                             </div> <!-- end of list -->
@@ -76,26 +86,26 @@
 
                     </div> <!-- end of card body -->
 
-                </div> <!-- end of card-->   
+                </div> <!-- end of card-->
 
                 <br>
 
                 <div class="card" id="transparent-card">
 
-                    <div class="card-body" >
-            
+                    <div class="card-body">
+
                         <div id="buttons-appear-here"></div>
 
                     </div> <!-- end of card body -->
 
                 </div><!-- end of card-->
-                
+
                 <br>
 
                 <div class="card-columns">
 
-                    <div id="gifs-appear-here"></div>                    
-    
+                    <div id="gifs-appear-here"></div>
+
                 </div><!-- end of card-->
 
                 <br>
@@ -108,7 +118,8 @@
 
     <!-- footer info -->
     <footer class="list-group-item-success">
-        <p> &copy; copyright 2019 | <a href="https://swissfink.github.io/" target="_blank" class="footer-text">Richard Fink</a> | All rights reserved.</p>
+        <p> &copy; copyright 2019 | <a href="https://swissfink.github.io/" target="_blank" class="footer-text">Richard
+                Fink</a> | All rights reserved.</p>
     </footer>
 
     <!-- link to jQuery JS -->
