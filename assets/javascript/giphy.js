@@ -42,18 +42,16 @@ $("#add-christmas-button").on("click", function (event) {
   // Add the topic from the text field into the array
   topics.push(christmasButton);
 
-  // Call the renderButtons to process the topics array
+  // Call the showButtons to process the topics array
   showButtons();
 
   // Clear out the text in the input box
   document.getElementById("christmas-button-input").value = "";
-  
+
 });
 
 // Function for displaying the christmas-gifs
-
 // Add event listener to the document to work for dynamically generated elements
-// $(".christmas-gif").on("click") will only add listeners to elements that are on the page at that time
 $(document).on("click", ".christmas-button", function () {
 
   clear();
@@ -67,7 +65,7 @@ $(document).on("click", ".christmas-button", function () {
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function(response){
+  }).then(function (response) {
 
     // Console log to see what the response object looks like.
     console.log(response);
@@ -92,22 +90,22 @@ $(document).on("click", ".christmas-button", function () {
 
       // Create the "still" / "animate" attributes that will be use to pause / activate the GIFs
       topicImage.attr({
+        "data-state": "still",
         "src": results[i].images.fixed_height_still.url,
         "data-still": results[i].images.fixed_height_still.url,
-        "data-animate": results[i].images.fixed_height.url,
-        "data-state": "still"
+        "data-animate": results[i].images.fixed_height.url
       });
-  
+
       // Append the p and topicImage variables to the topiclDiv variable.
       topicDiv.append(p);
       topicDiv.append(topicImage);
-      
+
       // Prepend the topicDiv variable to the element with an id of "gifs-appear-here."
       $("#gifs-appear-here").prepend(topicDiv);
     };
 
     // Activating and pausing the gifs
-    $(document).on("click", ".christmas-gif", function () {
+    $(".christmas-gif").on("click", function () {
 
       var state = $(this).attr("data-state");
 
@@ -116,13 +114,12 @@ $(document).on("click", ".christmas-button", function () {
         $(this).attr("src", $(this).attr("data-animate"));
         $(this).attr("data-state", "animate");
       }
-      
       // If the image's data-state is animate, change it to still.
       else {
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
       }
-    
+
     });
 
   });
