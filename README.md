@@ -3,7 +3,7 @@
 ### A dynamic web page that populates with gifs using the GIPHY API. This web app calls the GIPHY API and uses JavaScript and jQuery to change the HTML of the site.
 
 
-![Image of GIPHY API Landing Page](https://github.com/qgwright/Group-Project-2/blob/master/public/images/callo-homepage.png)
+![Image of GIPHY API Landing Page](https://github.com/swissfink/GiphyAPI/blob/master/assets/images/GIPHY-featured-image.png)
 
 
 ### Directions
